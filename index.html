@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .game-button {
+            display: block;
+            margin: 10px auto;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+        }
+        .game-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose a Game to Play</h1>
+    <button class="game-button" onclick="playGame('https://maxpog.github.io/snake-game-project/')">Play Snake</button>
+    <button class="game-button" onclick="playGame('https://maxpog.github.io/minesweeper-project/')">Play Minesweeper</button>
+    <button class="game-button" onclick="playGame('game3.html')">Play Game 3</button>
+    
+    <script>
+        function playGame(gameUrl) {
+            window.location.href = gameUrl;
+        }
+    </script>
+</body>
+</html>

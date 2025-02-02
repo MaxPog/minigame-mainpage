@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="minesweeper.css">
+    <script src="minesweeper.js"></script> <!-- No need to load this script again -->
+</head>
+<body>
+   <h1>Mines: <span id="mines-count">0</span></h1> 
+   <div id="smiley-container">
+       <img id="smiley" src="./images/neutral.png" alt="Smiley Face" onclick="resetGame()">
+   </div>
+   <div id="board">
+   </div>
+   <br>
+   <button id="flag-button"><img src="./images/flag.png" alt="Flag" width="30" height="30"></button>
+</body>
+</html>

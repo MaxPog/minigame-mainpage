@@ -65,16 +65,18 @@ function setFlag() {
 
 
 function clickTile() {
-    if(gameOver || this.classList.contains("tile-clicked")) {
+    if (gameOver || this.classList.contains("tile-clicked")) {
         return;
     }
-    
+
+    updateSmiley("click");
+
     let tile = this;
     
     if (flagEnabled) {
         if (tile.innerHTML === "") {
             let flagImg = document.createElement("img");
-            flagImg.src = "./images/flag.png";
+            flagImg.src = "images/flag.png"; 
             flagImg.alt = "Flag";
             flagImg.width = 35;
             flagImg.height = 35;
@@ -94,10 +96,13 @@ function clickTile() {
     }
 
     let coords = tile.id.split("-");
-    let r = parseInt (coords[0]);
-    let c = parseInt (coords[1]);
+    let r = parseInt(coords[0]);
+    let c = parseInt(coords[1]);
     checkMine(r, c);
+
+    setTimeout(() => updateSmiley("neutral"), 200);
 }
+
 
 function revealMines() {
     for (let r = 0; r < rows; r++) {

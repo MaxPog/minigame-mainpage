@@ -91,7 +91,7 @@ function clickTile() {
     if (flagEnabled) {
         if (tile.innerHTML === "") {
             let flagImg = document.createElement("img");
-            flagImg.src = "MINESWEEPER/images/flag.png";
+            flagImg.src = "./MINESWEEPER/images/flag.png";
             flagImg.alt = "Flag";
             flagImg.width = 35;
             flagImg.height = 35;
@@ -122,7 +122,7 @@ function revealMines() {
             let tile = board[r][c];
             if (minesLocation.includes(tile.id)) {
                 let mineImg = document.createElement("img");
-                mineImg.src = "MINESWEEPER/images/mine.png";
+                mineImg.src = "./MINESWEEPER/images/mine.png";
                 mineImg.alt = "Mine";
                 mineImg.width = 35;
                 mineImg.height = 35;
@@ -198,14 +198,14 @@ function updateSmiley(state) {
     const smiley = document.getElementById("smiley");
 
     if (state === "neutral") {
-        smiley.src = "MINESWEEPER/images/neutral.png";
+        smiley.src = "./MINESWEEPER/images/neutral.png";
     } else if (state === "click") {
-        smiley.src = "MINESWEEPER/images/surprised.png";
+        smiley.src = "./MINESWEEPER/images/surprised.png";
     } else if (state === "win") {
-        smiley.src = "MINESWEEPER/images/cool.png";
+        smiley.src = "./MINESWEEPER/images/cool.png";
     } else if (state === "lose") {
-        smiley.src = "MINESWEEPER/images/lost.png";
-    }
+        smiley.src = "./MINESWEEPER/images/lost.png";
+    }   
 }
 
 window.onload = function () {

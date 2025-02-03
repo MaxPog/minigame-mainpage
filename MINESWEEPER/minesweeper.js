@@ -50,23 +50,6 @@ function startGame() {
     console.log(board);
 }
 
-function resetGame() {
-    gameOver = false;
-    tilesClicked = 0;
-    minesLocation = [];
-    flagEnabled = false;
-    
-    document.getElementById("mines-count").innerText = minesCount;
-
-    const board = document.getElementById("board");
-    board.innerHTML = "";
-    
-    setMines();
-    startGame();
-
-    updateSmiley("neutral");
-}
-
 
 function setFlag() {
     if (flagEnabled) {

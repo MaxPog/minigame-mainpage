@@ -2,7 +2,7 @@ var board = [];
 var rows = 8;
 var columns = 8;
 
-var minesCount = 10;
+var minesCount = 8;
 var minesLocation = [];
 
 var tilesClicked = 0;
@@ -72,7 +72,7 @@ function clickTile() {
     updateSmiley("click");
 
     let tile = this;
-    
+
     if (flagEnabled) {
         if (tile.innerHTML === "") {
             let flagImg = document.createElement("img");
@@ -100,8 +100,12 @@ function clickTile() {
     let c = parseInt(coords[1]);
     checkMine(r, c);
 
-    setTimeout(() => updateSmiley("neutral"), 200);
+
+    if (!gameOver) {
+        setTimeout(() => updateSmiley("neutral"), 200);
+    }
 }
+
 
 
 function revealMines() {

@@ -8,6 +8,15 @@ body {
     border-bottom: 5px solid palevioletred;
 }
 
+#gameTitle {
+    color: black;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 20px; /* Space from top of screen */
+    margin-bottom: 20px;
+}    
+
 #startButton {
     position: absolute;
     top: 50%;

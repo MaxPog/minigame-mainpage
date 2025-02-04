@@ -13,7 +13,7 @@ body {
     font-weight: bold;
     font-family: Arial, sans-serif;
     text-align: center;
-    margin-top: 20px; /* Space from top of screen */
+    margin-top: 20px;
     margin-bottom: 20px;
 }    
 
@@ -29,5 +29,5 @@ body {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    z-index: 10;  /* Make sure the button stays on top */
+    z-index: 10;
 }

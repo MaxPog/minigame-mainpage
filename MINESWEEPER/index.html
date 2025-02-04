@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minesweeper</title>
     <link rel="stylesheet" href="minesweeper.css">
-    <script src="minesweeper.js"></script> <!-- No need to load this script again -->
+    <script src="minesweeper.js"></script>
 </head>
 <body>
-   <h1>Mines: <span id="mines-count">0</span></h1> 
+   <h1 id="gameTitle">Minesweeper</h1>
    <div id="smiley-container">
    <img id="smiley" src="images/neutral.png" alt="Smiley Face">
+   <div id="mine-counter">
+    <img src="images/mine.png" alt="Mine Icon" id="mine-icon">
+    <span id="mines-count">0</span>
+   </div>
    </div>
    <div id="board">
    </div>

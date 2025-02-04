@@ -57,8 +57,8 @@ window.onload = function() {
 }
 
 function startGame() {
-    gameStarted = true;  // Set the game to start
-    document.getElementById("startButton").style.display = "none";  // Hide the start button
+    gameStarted = true;
+    document.getElementById("startButton").style.display = "none";
     requestAnimationFrame(update);
 }
 

@@ -3,6 +3,13 @@ body {
     text-align: center;
 }
 
+#score-title {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    color: black;
+    margin: 0;
+}
+
 #board {
     border: 2px solid black;
     display: block;

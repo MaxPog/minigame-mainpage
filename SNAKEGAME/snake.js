@@ -17,12 +17,10 @@ var foodX;
 var foodY;
 
 var gameOver = false;
+var score = 0;
 
 var foodImage = new Image();
 foodImage.src = "./images2/apple.png";
-
-var snakeFace = new Image();
-snakeFace.src = "snakeFace.png";
 
 
 window.onload = function() {
@@ -73,6 +71,7 @@ function update() {
 
     if (snakeX == foodX && snakeY == foodY) {
         snakeBody.push([foodX, foodY])
+        score++;
         place();
     }
 
@@ -103,6 +102,8 @@ function update() {
             break;
         }
     }
+    
+    document.getElementById("score-title").textContent = "Score: " + score;
 }
 
 function drawGrid() {

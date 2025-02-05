@@ -4,8 +4,8 @@ body {
 
 #board {
     background-color: black;
-    border-top: 5px solid palevioletred;
-    border-bottom: 5px solid palevioletred;
+    border-top: 5px solid violet;
+    border-bottom: 5px solid violet;
 }
 
 #gameTitle {

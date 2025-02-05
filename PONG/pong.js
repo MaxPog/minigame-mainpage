@@ -48,7 +48,7 @@ window.onload = function() {
     const startButton = document.getElementById("startButton");
     startButton.addEventListener("click", startGame);
 
-    context.fillStyle = "palevioletred"
+    context.fillStyle = "white"
     context.fillRect(player1.x, player1.y, player1.width, player1.height);
 
     requestAnimationFrame(update);
@@ -71,7 +71,7 @@ function update() {
     if (!outOfBounds(nextPlayer1Y)) {
         player1.y = nextPlayer1Y;
     }
-    context.fillStyle = "palevioletred";
+    context.fillStyle = "white";
     context.fillRect(player1.x, player1.y, player1.width, player1.height);
 
     let cpuSpeed = 3;
@@ -130,10 +130,7 @@ function update() {
     context.font = "45px Arial";
     context.fillText(player1Score, boardWidth / 5, 45);
     context.fillText(player2Score, boardWidth * 4 / 5 - 45, 45);
-
-    for (let i = 10; i < board.height; i += 25) {
-        context.fillRect(board.width / 2 - 10, i, 5, 5);
-    }
+      
 }
 
 

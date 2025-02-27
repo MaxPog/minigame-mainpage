@@ -2,7 +2,11 @@ body {
     font-family: 'Arial';
     text-align: center;
     padding: 50px;
-    background-color: #f5f5f5;
+    background-image: url('background-image.jpg'); /* Replace with your custom image */
+    background-size: cover;
+    background-repeat: repeat; /* Repeat the image both horizontally and vertically */
+    background-position: 0 0;
+    animation: slideBackground 20s linear infinite; /* Animate the background by shifting */
 }
 
 h1 {
@@ -25,21 +29,22 @@ h1 {
     width: 250px;
     height: 60px;
     transition: transform 0.3s ease, background-color 0.3s ease;
-    box-shadow: 5px 5px #888888;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    animation: wobble 1s infinite alternate;
 }
 
+/* Tilt Effect on Hover */
 .game-button:hover {
-    transform: scale(1.1);
+    transform: rotate(8deg);
 }
 
+/* Click Effect */
 .game-button:active {
-    transform: scale(0.95);
+    transform: scale(0.95) rotate(-8deg);
 }
 
+/* Specific Button Colors */
 .snake-button {
     background-color: greenyellow;
 }
@@ -76,20 +81,12 @@ h1 {
     background-color: palevioletred;
 }
 
-@keyframes wobble {
+/* Background Animation */
+@keyframes slideBackground {
     0% {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(2deg);
-    }
-    50% {
-        transform: rotate(0deg);
-    }
-    75% {
-        transform: rotate(-2deg);
+        background-position: 0 0;
     }
     100% {
-        transform: rotate(0deg);
+        background-position: 100% 100%;
     }
 }

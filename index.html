@@ -8,15 +8,18 @@
 </head>
 <body>
     <h1>Choose a Game to Play</h1>
-    <button class="game-button snake-button" onclick="playGame('SNAKEGAME/index.html')">
-        Play Snake
-    </button>
-    <button class="game-button minesweeper-button" onclick="playGame('MINESWEEPER/index.html')">
-        Play Minesweeper
-    </button>
-    <button class="game-button pong-button" onclick="playGame('PONG/index.html')">
-        Play Pong
-    </button>
+
+    <div class="button-container">
+        <button class="game-button snake-button" onclick="playGame('SNAKEGAME/index.html')">
+            Play Snake
+        </button>
+        <button class="game-button minesweeper-button" onclick="playGame('MINESWEEPER/index.html')">
+            Play Minesweeper
+        </button>
+        <button class="game-button pong-button" onclick="playGame('PONG/index.html')">
+            Play Pong
+        </button>
+    </div>
 
     <script>
         function playGame(gameUrl) {

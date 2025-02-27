@@ -1,84 +1,71 @@
 body {
-    font-family: 'Arial';
+    font-family: 'Arial', sans-serif;
     text-align: center;
     padding: 50px;
     background-image: url('background-image.jpg'); /* Replace with your custom image */
     background-size: cover;
-    background-repeat: repeat; /* Repeat the image both horizontally and vertically */
+    background-repeat: repeat;
     background-position: 0 0;
-    animation: slideBackground 20s linear infinite; /* Animate the background by shifting */
+    animation: slideBackground 20s linear infinite;
 }
 
 h1 {
     color: #333;
     font-size: 36px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
+/* Container for button spacing */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;  /* Space between buttons */
+    flex-wrap: wrap;  /* Allow buttons to wrap on smaller screens */
+}
+
+/* General Button Styling */
 .game-button {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px;
-    padding: 20px;
-    font-size: 24px;
+    width: 220px;  /* Increased size */
+    height: 220px; /* Increased size */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
-    border: 4px solid #333;
-    border-radius: 15px;
-    color: #333;
-    width: 250px;
-    height: 60px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Comic Sans Font */
+    font-size: 28px;  /* Bigger Text */
+    font-weight: bold; /* Bold Text */
+    color: solid black;  /* Adjust text color for visibility */
     text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
 }
 
 /* Tilt Effect on Hover */
 .game-button:hover {
-    transform: rotate(8deg);
+    transform: rotate(8deg) scale(1.1);
 }
 
 /* Click Effect */
 .game-button:active {
-    transform: scale(0.95) rotate(-8deg);
+    transform: rotate(-8deg) scale(0.95);
 }
 
-/* Specific Button Colors */
+/* Assign Custom PNG Images */
 .snake-button {
-    background-color: greenyellow;
-}
-
-.snake-button:hover {
-    background-color: lightskyblue;
-}
-
-.snake-button:active {
-    background-color: yellowgreen;
+    background-image: url('images3/snakebutton.png'); /* Replace with your snake PNG */
 }
 
 .minesweeper-button {
-    background-color: yellow;
-}
-
-.minesweeper-button:hover {
-    background-color: lightskyblue;
-}
-
-.minesweeper-button:active {
-    background-color: yellow;
+    background-image: url('images3/minesweeperbutton.png'); /* Replace with your minesweeper PNG */
 }
 
 .pong-button {
-    background-color: palevioletred;
-}
-
-.pong-button:hover {
-    background-color: lightskyblue;
-}
-
-.pong-button:active {
-    background-color: palevioletred;
+    background-image: url('images3/pongbutton.png'); /* Replace with your pong PNG */
 }
 
 /* Background Animation */

@@ -10,13 +10,23 @@
 <body>
    <h1 id="gameTitle">Minesweeper</h1>
    <div id="smiley-container">
-   <img id="smiley" src="images/neutral.png" alt="Smiley Face">
-   <div id="mine-counter">
-    <img src="images/mine.png" alt="Mine Icon" id="mine-icon">
-    <span id="mines-count">0</span>
+       <img id="smiley" src="images/neutral.png" alt="Smiley Face">
+       <div id="mine-counter">
+           <img src="images/mine.png" alt="Mine Icon" id="mine-icon">
+           <span id="mines-count">0</span>
+       </div>
    </div>
-   </div>
-   <div id="board">
+   <div id="game-container">
+       <div id="board"></div>
+       <div id="instructions">
+           <h3>How to Play:</h3>
+           <p>Use your mouse to play:</p>
+           <img src="images/mouseL.png" alt="Mouse Controls">
+           <ul>
+               <li>Left Click - Reveal a cell</li>
+           </ul>
+           <p>Clear all non-mine cells to win. Avoid clicking on mines!</p>
+       </div>
    </div>
    <br>
    <button id="flag-button"><img src="./images/flag.png" alt="Flag" width="30" height="30"></button>

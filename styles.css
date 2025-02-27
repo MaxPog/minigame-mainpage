@@ -1,0 +1,95 @@
+body {
+    font-family: 'Arial';
+    text-align: center;
+    padding: 50px;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    color: #333;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.game-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    padding: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    border: 4px solid #333;
+    border-radius: 15px;
+    color: #333;
+    width: 250px;
+    height: 60px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 5px 5px #888888;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: wobble 1s infinite alternate;
+}
+
+.game-button:hover {
+    transform: scale(1.1);
+}
+
+.game-button:active {
+    transform: scale(0.95);
+}
+
+.snake-button {
+    background-color: greenyellow;
+}
+
+.snake-button:hover {
+    background-color: lightskyblue;
+}
+
+.snake-button:active {
+    background-color: yellowgreen;
+}
+
+.minesweeper-button {
+    background-color: yellow;
+}
+
+.minesweeper-button:hover {
+    background-color: lightskyblue;
+}
+
+.minesweeper-button:active {
+    background-color: yellow;
+}
+
+.pong-button {
+    background-color: palevioletred;
+}
+
+.pong-button:hover {
+    background-color: lightskyblue;
+}
+
+.pong-button:active {
+    background-color: palevioletred;
+}
+
+@keyframes wobble {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(2deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

@@ -10,8 +10,21 @@ body {
     margin: 0;
 }
 
+#game-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 #board {
-    border: 2px solid black;
+    border: 10px solid mediumslateblue;
     display: block;
-    margin: auto;
+}
+
+#instructions {
+    margin-left: 20px;
+    text-align: left;
+    max-width: 200px;
+    flex-shrink: 0;
 }

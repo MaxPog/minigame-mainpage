@@ -61,7 +61,7 @@ function update() {
         return;
     }
 
-    context.fillStyle="lightgrey";
+    context.fillStyle="yellowgreen";
     context.fillRect(0, 0, board.width, board.height);
 
     drawGrid();

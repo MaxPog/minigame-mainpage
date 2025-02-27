@@ -2,7 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     text-align: center;
     padding: 50px;
-    background-image: url('background-image.jpg'); /* Replace with your custom image */
+    background-image: url(''); 
     background-size: cover;
     background-repeat: repeat;
     background-position: 0 0;
@@ -15,22 +15,20 @@ h1 {
     margin-bottom: 50px;
 }
 
-/* Container for button spacing */
 .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;  /* Space between buttons */
-    flex-wrap: wrap;  /* Allow buttons to wrap on smaller screens */
+    gap: 50px;
+    flex-wrap: wrap;
 }
 
-/* General Button Styling */
 .game-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 220px;  /* Increased size */
-    height: 220px; /* Increased size */
+    width: 220px; 
+    height: 220px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -38,37 +36,34 @@ h1 {
     border: none;
     cursor: pointer;
     transition: transform 0.3s ease;
-    font-family: 'Comic Sans MS', cursive, sans-serif; /* Comic Sans Font */
-    font-size: 28px;  /* Bigger Text */
-    font-weight: bold; /* Bold Text */
-    color: solid black;  /* Adjust text color for visibility */
+    font-family: 'Comic Sans MS', cursive, sans-serif; 
+    font-size: 28px; 
+    font-weight: bold;
+    color: solid black; 
     text-align: center;
 }
 
-/* Tilt Effect on Hover */
 .game-button:hover {
     transform: rotate(8deg) scale(1.1);
 }
 
-/* Click Effect */
 .game-button:active {
     transform: rotate(-8deg) scale(0.95);
 }
 
-/* Assign Custom PNG Images */
 .snake-button {
-    background-image: url('images3/snakebutton.png'); /* Replace with your snake PNG */
+    background-image: url('images3/snakebutton.png');
 }
 
 .minesweeper-button {
-    background-image: url('images3/minesweeperbutton.png'); /* Replace with your minesweeper PNG */
+    background-image: url('images3/minesweeperbutton.png'); 
 }
 
 .pong-button {
-    background-image: url('images3/pongbutton.png'); /* Replace with your pong PNG */
+    background-image: url('images3/pongbutton.png'); 
 }
 
-/* Background Animation */
+
 @keyframes slideBackground {
     0% {
         background-position: 0 0;

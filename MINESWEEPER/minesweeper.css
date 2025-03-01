@@ -110,24 +110,24 @@ body {
 
 #game-over-container {
     position: absolute;
-    top: 35%; /* Adjust this value to position the image */
-    left: 20%; /* Center horizontally */
+    top: 35%;
+    left: 20%;
     transform: translate(-50%, -50%);
-    display: none; /* Initially hidden */
+    display: none;
 }
 
 #game-over-image {
-    width: 380px; /* Adjust the width as needed */
-    height: 300px; /* Adjust the height as needed */
+    width: 380px;
+    height: 300px;
 }
 
 #restartButton {
     cursor: pointer;
-    width: 100px; /* Adjust the width as needed */
-    height: 100px; /* Adjust the height as needed */
+    width: 100px;
+    height: 100px;
     position: absolute;
-    top: 55%; /* Position below the image */
-    left: 27%; /* Center horizontally */
+    top: 55%;
+    left: 27%;
     transform: translate(-50%, -50%);
-    display: none; /* Initially hidden */
+    display: none;
 }

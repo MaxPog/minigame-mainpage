@@ -128,6 +128,11 @@ function checkMine(r, c) {
         return;
     }
 
+    // Check if the tile has a flag before revealing
+    if (board[r][c].children.length > 0 && board[r][c].children[0].tagName === "IMG") {
+        return;
+    }
+
     board[r][c].classList.add("tile-clicked");
     tilesClicked += 1;
 

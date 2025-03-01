@@ -38,6 +38,7 @@ let ball = {
 }
 
 let gameStarted = false;
+let gameOver = false;
 
 window.onload = function() {
     board = document.getElementById("board");
@@ -48,22 +49,50 @@ window.onload = function() {
     const startButton = document.getElementById("startButton");
     startButton.addEventListener("click", startGame);
 
-    context.fillStyle = "white"
+    const restartButton = document.getElementById("restartButton");
+    restartButton.addEventListener("click", startGame);
+
+    drawTextOnImage("images/start.png", "Start", 20, 100, 50);
+
+    context.fillStyle = "white";
     context.fillRect(player1.x, player1.y, player1.width, player1.height);
 
     requestAnimationFrame(update);
     document.addEventListener("keyup", movePlayer);
+}
 
+function drawTextOnImage(imageSrc, text, fontSize, width, height) {
+    const img = new Image();
+    img.src = imageSrc;
+    img.onload = function() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
+        ctx.font = `${fontSize}px Arial`;
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'center';
+        ctx.fillText(text, width / 2, height / 2);
+        const dataURL = canvas.toDataURL();
+        document.getElementById('startButtonImage').src = dataURL;
+    }
 }
 
 function startGame() {
     gameStarted = true;
+    gameOver = false;
+    player1Score = 0;
+    player2Score = 0;
     document.getElementById("startButton").style.display = "none";
+    document.getElementById("game-over-container").style.display = "none";
+    document.getElementById("restartButton").style.display = "none";
+    resetGame(1);
     requestAnimationFrame(update);
 }
 
 function update() {
-    if (!gameStarted) return;
+    if (!gameStarted || gameOver) return;
     requestAnimationFrame(update);
     context.clearRect(0, 0, board.width, board.height);
 
@@ -75,22 +104,19 @@ function update() {
     context.fillRect(player1.x, player1.y, player1.width, player1.height);
 
     let cpuSpeed = 3;
-    let mistakeChance = 0.2;
+    let mistakeChance = 0.1;
 
     let targetY = ball.y - player2.height / 2;
 
-
     if (Math.random() > mistakeChance) {
-
-        if (player2.y < targetY - 5) {
-            player2.velocityY = cpuSpeed;
-        } else if (player2.y > targetY + 5) {
-            player2.velocityY = -cpuSpeed;
+        if (player2.y < targetY) {
+            player2.velocityY = Math.min(cpuSpeed, player2.velocityY + 1);
+        } else if (player2.y > targetY) {
+            player2.velocityY = Math.max(-cpuSpeed, player2.velocityY - 1);
         } else {
             player2.velocityY = 0;
         }
     } else {
-
         if (Math.random() > 0.5) {
             player2.velocityY = cpuSpeed;
         } else {
@@ -113,10 +139,8 @@ function update() {
         ball.velocityY *= -1;
     }
 
-    if (detectCollision(ball, player1)) {
-        ball.velocityX = Math.abs(ball.velocityX);
-    } else if (detectCollision(ball, player2)) {
-        ball.velocityX = -Math.abs(ball.velocityX);
+    if (detectCollision(ball, player1) || detectCollision(ball, player2)) {
+        ball.velocityX *= -1;
     }
 
     if (ball.x < 0) {
@@ -130,10 +154,17 @@ function update() {
     context.font = "45px Arial";
     context.fillText(player1Score, boardWidth / 5, 45);
     context.fillText(player2Score, boardWidth * 4 / 5 - 45, 45);
-      
+
+    if (player2Score >= 3) {
+        gameOver = true;
+        showGameOver();
+    }
 }
 
-
+function showGameOver() {
+    document.getElementById("game-over-container").style.display = "block";
+    document.getElementById("restartButton").style.display = "block";
+}
 
 function outOfBounds(yPosition) {
     return (yPosition < 0 || yPosition + playerHeight > boardHeight);
@@ -146,14 +177,7 @@ function movePlayer(e) {
     else if (e.code == "ArrowDown") {
         player1.velocityY = 3;
     }
-    else if (e.code == "KeyW") {
-        player2.velocityY = -3;
-    }
-    else if (e.code == "KeyS") {
-        player2.velocityY = 3;
-    }
 }
-
 
 function detectCollision(a, b) {
     return a.x < b.x + b.width &&
@@ -168,7 +192,7 @@ function resetGame(direction) {
         y : boardHeight / 2,
         width : ballWidth,
         height : ballHeight,
-        velocityX : direction * (2 + Math.random() * 2),
-        velocityY : (Math.random() > 0.5 ? 1 : -1) * (2 + Math.random() * 2) 
+        velocityX : direction * 2,
+        velocityY : 3
     };
 }

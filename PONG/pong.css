@@ -47,3 +47,43 @@ body {
     border-radius: 5px;
     z-index: 10;
 }
+
+#startButton {
+    position: absolute;
+    top: 50%;
+    left: 44.3%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#startButtonImage {
+    width: 150px;
+    height: 100px;
+}
+
+#game-over-container {
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+#game-over-image {
+    width: 380px;
+    height: 300px;
+}
+
+#restartButton {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 55%;
+    left: 27%;
+    transform: translate(-50%, -50%);
+    display: none;
+}

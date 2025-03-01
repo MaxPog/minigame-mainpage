@@ -4,7 +4,6 @@ var columns = 8;
 
 var minesCount = 8;
 var minesLocation = [];
-
 var tilesClicked = 0;
 var flagEnabled = false;
 
@@ -47,22 +46,12 @@ function startGame() {
         }
         board.push(row);
     }
-    console.log(board);
 }
 
-
 function setFlag() {
-    if (flagEnabled) {
-        flagEnabled = false;
-        document.getElementById("flag-button").style.backgroundColor = "lightgrey";
-    }
-    else {
-        flagEnabled = true;
-        document.getElementById("flag-button").style.backgroundColor = "darkgrey";
-    }
-} 
-
-
+    flagEnabled = !flagEnabled;
+    document.getElementById("flag-button").classList.toggle("active");
+}
 
 function clickTile() {
     if (gameOver || this.classList.contains("tile-clicked")) {
@@ -76,7 +65,7 @@ function clickTile() {
     if (flagEnabled) {
         if (tile.innerHTML === "") {
             let flagImg = document.createElement("img");
-            flagImg.src = "images/flag.png"; 
+            flagImg.src = "images/flag.png";
             flagImg.alt = "Flag";
             flagImg.width = 35;
             flagImg.height = 35;
@@ -87,11 +76,17 @@ function clickTile() {
         return;
     }
 
+    // Check if the tile has a flag before revealing
+    if (tile.children.length > 0 && tile.children[0].tagName === "IMG") {
+        return;
+    }
+
     if (minesLocation.includes(tile.id)) {
-        alert("GAME OVER");
         gameOver = true;
         updateSmiley("lose");
         revealMines();
+        document.getElementById("game-over-container").style.display = "block";
+        document.getElementById("restartButton").style.display = "block";
         return;
     }
 
@@ -100,13 +95,13 @@ function clickTile() {
     let c = parseInt(coords[1]);
     checkMine(r, c);
 
-
-    if (!gameOver) {
-        setTimeout(() => updateSmiley("neutral"), 200);
+    if (!gameOver && tilesClicked === rows * columns - minesCount) {
+        gameOver = true;
+        updateSmiley("win");
+        document.getElementById("game-over-container").style.display = "block";
+        document.getElementById("restartButton").style.display = "block";
     }
 }
-
-
 
 function revealMines() {
     for (let r = 0; r < rows; r++) {
@@ -129,7 +124,7 @@ function checkMine(r, c) {
     if (r < 0 || r >= rows || c < 0 || c >= columns) {
         return;
     }
-    if (board[r][c].classList.contains("tile-clicked")){
+    if (board[r][c].classList.contains("tile-clicked")) {
         return;
     }
 
@@ -138,39 +133,31 @@ function checkMine(r, c) {
 
     let minesFound = 0;
 
-    minesFound += checkTile(r-1, c-1);
-    minesFound += checkTile(r-1, c);
-    minesFound += checkTile(r-1, c+1);
+    minesFound += checkTile(r - 1, c - 1);
+    minesFound += checkTile(r - 1, c);
+    minesFound += checkTile(r - 1, c + 1);
 
-    minesFound += checkTile(r, c-1);
-    minesFound += checkTile(r, c+1);
+    minesFound += checkTile(r, c - 1);
+    minesFound += checkTile(r, c + 1);
 
-    minesFound += checkTile(r+1, c-1);
-    minesFound += checkTile(r+1, c);
-    minesFound += checkTile(r+1, c+1);
+    minesFound += checkTile(r + 1, c - 1);
+    minesFound += checkTile(r + 1, c);
+    minesFound += checkTile(r + 1, c + 1);
 
     if (minesFound > 0) {
         board[r][c].innerText = minesFound;
         board[r][c].classList.add("x" + minesFound.toString());
-    }
-    else {
-        checkMine(r-1, c-1);
-        checkMine(r-1, c);
-        checkMine(r-1, c+1);
+    } else {
+        checkMine(r - 1, c - 1);
+        checkMine(r - 1, c);
+        checkMine(r - 1, c + 1);
 
-        checkMine(r, c-1);
-        checkMine(r, c+1);
+        checkMine(r, c - 1);
+        checkMine(r, c + 1);
 
-        checkMine(r+1, c-1);
-        checkMine(r+1, c);
-        checkMine(r+1, c+1);
-
-    }
-
-    if (tilesClicked == rows * columns - minesCount) {
-        document.getElementById("mines-count").innerText = "Cleared";
-        gameOver = true;
-        updateSmiley("win");
+        checkMine(r + 1, c - 1);
+        checkMine(r + 1, c);
+        checkMine(r + 1, c + 1);
     }
 }
 
@@ -184,8 +171,6 @@ function checkTile(r, c) {
     return 0;
 }
 
-
-
 function updateSmiley(state) {
     const smiley = document.getElementById("smiley");
 
@@ -197,9 +182,18 @@ function updateSmiley(state) {
         smiley.src = "./images/cool.png";
     } else if (state === "lose") {
         smiley.src = "./images/lost.png";
-    }   
+    }
 }
 
-window.onload = function () {
+function restartGame() {
+    gameOver = false;
+    tilesClicked = 0;
+    minesLocation = [];
+    board = [];
+    document.getElementById("board").innerHTML = "";
+    document.getElementById("game-over-container").style.display = "none";
+    document.getElementById("restartButton").style.display = "none";
     startGame();
-};
+}
+
+document.getElementById("restartButton").addEventListener("click", restartGame);

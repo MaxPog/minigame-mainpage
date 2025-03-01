@@ -8,6 +8,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     margin-top: 20px;
+    position: relative;
 }
 
 #board {
@@ -91,6 +92,42 @@ body {
     width: 100px;
     height: 50px;
     font-size: 20px;
-    background-color: lightgray;
-    border: 2px solid black;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    left: -120px;
+}
+
+#flag-image {
+    width: 120px;
+    height: 80px;
+}
+
+#flag-button.active #flag-image {
+    content: url('images/flagpressed.png');
+}
+
+#game-over-container {
+    position: absolute;
+    top: 35%; /* Adjust this value to position the image */
+    left: 20%; /* Center horizontally */
+    transform: translate(-50%, -50%);
+    display: none; /* Initially hidden */
+}
+
+#game-over-image {
+    width: 380px; /* Adjust the width as needed */
+    height: 300px; /* Adjust the height as needed */
+}
+
+#restartButton {
+    cursor: pointer;
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    position: absolute;
+    top: 55%; /* Position below the image */
+    left: 27%; /* Center horizontally */
+    transform: translate(-50%, -50%);
+    display: none; /* Initially hidden */
 }

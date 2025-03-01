@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pong</title>
     <link rel="stylesheet" href="pong.css">
-    <script src="pong.js"></script>
+    <script src="pong.js" defer></script>
 </head>
 <body>
     <h1 id="gameTitle">Pong</h1>
-    <button id="startButton">Start Game</button>
+    <button id="startButton">
+        <img id="startButtonImage" src="images4/start.png" alt="Start Button">
+    </button>
     <div id="game-container">
         <canvas id="board"></canvas>
         <div id="instructions">
@@ -23,5 +25,9 @@
             <p>Keep the ball in play and try to score against your opponent!</p>
         </div>
     </div>
+    <div id="game-over-container">
+        <img id="game-over-image" src="images4/gameover.png" alt="Game Over Image">
+    </div>
+    <img id="restartButton" src="images4/restart.png" alt="Restart Button">
 </body>
 </html>

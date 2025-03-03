@@ -2,11 +2,12 @@ body {
     font-family: 'Arial', sans-serif;
     text-align: center;
     padding: 50px;
-    background-image: url(''); 
+    background-image: url('images3/background.');
     background-size: cover;
-    background-repeat: repeat;
-    background-position: 0 0;
-    animation: slideBackground 20s linear infinite;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    height: 80vh;
 }
 
 h1 {
@@ -27,7 +28,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 220px; 
+    width: 220px;
     height: 220px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -36,10 +37,10 @@ h1 {
     border: none;
     cursor: pointer;
     transition: transform 0.3s ease;
-    font-family: 'Comic Sans MS', cursive, sans-serif; 
-    font-size: 28px; 
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 28px;
     font-weight: bold;
-    color: solid black; 
+    color: black;
     text-align: center;
 }
 
@@ -56,19 +57,9 @@ h1 {
 }
 
 .minesweeper-button {
-    background-image: url('images3/minesweeperbutton.png'); 
+    background-image: url('images3/minesweeperbutton.png');
 }
 
 .pong-button {
-    background-image: url('images3/pongbutton.png'); 
-}
-
-
-@keyframes slideBackground {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 100% 100%;
-    }
+    background-image: url('images3/pongbutton.png');
 }

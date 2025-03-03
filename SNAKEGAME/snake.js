@@ -15,6 +15,7 @@ var snakeBody = [];
 var foodX;
 var foodY;
 
+var gameStarted = false;
 var gameOver = false;
 var score = 0;
 
@@ -28,12 +29,25 @@ window.onload = function() {
     context = board.getContext("2d");
 
     placeFood();
+    document.getElementById("startButton").addEventListener("click", startGame);
     document.addEventListener("keyup", changeDirection);
 
     const restartButton = document.getElementById("restartButton");
     restartButton.addEventListener("click", restartGame);
+}
 
-    setInterval(update, 1000/10);
+function startGame() {
+    gameStarted = true;
+    gameOver = false;
+    score = 0;
+    snakeX = blockSize * 5;
+    snakeY = blockSize * 5;
+    velocityX = 0;
+    velocityY = 0;
+    snakeBody = [];
+    document.getElementById("startButton").style.display = "none";
+    placeFood();
+    update();
 }
 
 function changeDirection(e) {
@@ -56,11 +70,9 @@ function changeDirection(e) {
 }
 
 function update() {
-    if (gameOver) {
-        document.getElementById("game-over-container").style.display = "block";
-        document.getElementById("restartButton").style.display = "block";
-        return;
-    }
+    if (!gameStarted || gameOver) return;
+
+    setTimeout(update, 100);
 
     context.fillStyle = "yellowgreen";
     context.fillRect(0, 0, board.width, board.height);
@@ -101,6 +113,11 @@ function update() {
         }
     }
 
+    if (gameOver) {
+        document.getElementById("game-over-container").style.display = "block";
+        document.getElementById("restartButton").style.display = "block";
+    }
+
     document.getElementById("score-title").textContent = "Score: " + score;
 }
 
@@ -139,4 +156,5 @@ function restartGame() {
     placeFood();
     document.getElementById("game-over-container").style.display = "none";
     document.getElementById("restartButton").style.display = "none";
+    update();
 }

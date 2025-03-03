@@ -4,6 +4,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url('');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    height: 100vh;
+    color: black;
 }
 
 #score-title {
@@ -56,4 +63,20 @@ body {
     left: 27%;
     transform: translate(-50%, -50%);
     display: none;
+}
+
+#startButton {
+    position: absolute;
+    top: 50%;
+    left: 44.3%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#startButton img {
+    width: 150px;
+    height: 100px;
 }

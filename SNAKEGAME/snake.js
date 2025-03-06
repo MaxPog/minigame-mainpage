@@ -12,12 +12,11 @@ var velocityY = 0;
 
 var snakeBody = [];
 
-var foodX;
-var foodY;
-
+var foodItems = [];
 var gameStarted = false;
 var gameOver = false;
 var score = 0;
+var maxFoodItems = 12;
 
 var foodImage = new Image();
 foodImage.src = "images2/apple.png";
@@ -45,6 +44,7 @@ function startGame() {
     velocityX = 0;
     velocityY = 0;
     snakeBody = [];
+    foodItems = [];
     document.getElementById("startButton").style.display = "none";
     placeFood();
     update();
@@ -79,12 +79,21 @@ function update() {
 
     drawGrid();
 
-    context.drawImage(foodImage, foodX, foodY, blockSize, blockSize);
+    for (let i = 0; i < foodItems.length; i++) {
+        context.drawImage(foodImage, foodItems[i].x, foodItems[i].y, blockSize, blockSize);
+    }
 
-    if (snakeX == foodX && snakeY == foodY) {
-        snakeBody.push([foodX, foodY]);
-        score++;
-        placeFood();
+    for (let i = 0; i < foodItems.length; i++) {
+        if (snakeX == foodItems[i].x && snakeY == foodItems[i].y) {
+            snakeBody.push([foodItems[i].x, foodItems[i].y]);
+            score++;
+            foodItems.splice(i, 1);
+            placeFood();
+            if (foodItems.length < maxFoodItems) {
+                placeFood();
+            }
+            break;
+        }
     }
 
     for (let i = snakeBody.length - 1; i > 0; i--) {
@@ -141,8 +150,19 @@ function drawGrid() {
 }
 
 function placeFood() {
-    foodX = Math.floor(Math.random() * cols) * blockSize;
-    foodY = Math.floor(Math.random() * rows) * blockSize;
+    let newFood = {
+        x: Math.floor(Math.random() * cols) * blockSize,
+        y: Math.floor(Math.random() * rows) * blockSize
+    };
+
+
+    for (let i = 0; i < snakeBody.length; i++) {
+        if (snakeBody[i][0] == newFood.x && snakeBody[i][1] == newFood.y) {
+            return placeFood();
+        }
+    }
+
+    foodItems.push(newFood);
 }
 
 function restartGame() {
@@ -153,6 +173,7 @@ function restartGame() {
     velocityX = 0;
     velocityY = 0;
     snakeBody = [];
+    foodItems = [];
     placeFood();
     document.getElementById("game-over-container").style.display = "none";
     document.getElementById("restartButton").style.display = "none";
